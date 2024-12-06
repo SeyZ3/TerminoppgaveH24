@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innlogging</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Innlogging</h1>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="error-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST">
+            <label for="username">Brukernavn:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Passord:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Logg inn</button>
+        </form>
+        <a href="{{ url_for('register') }}">Har du ikke en konto? Registrer deg her.</a>
+    </div>
+</body>
+</html>

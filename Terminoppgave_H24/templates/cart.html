@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handlekurv</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Handlekurv</h1>
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                {{ item }} 
+                <a href="{{ url_for('remove_from_cart', product_name=item) }}">Fjern fra handlekurv</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('products') }}">Tilbake til produkter</a>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <a href=""><h2>Butikk</h2></a>
+        <a href=""><h2>Handlekurv</h2></a>
+    </div>
+    <div class="lowheader">
+        <h2>Welcome to my store!</h2>
+        <p>We have a variety of products for you.</p>
+    </div>
+
+    <h2>Recommended Products</h2>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hjem</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('home') }}"><h2>Hjem</h2></a>
+        <a href="{{ url_for('products') }}"><h2>Produkter</h2></a>  <!-- Legg til lenke til produkter -->
+        <a href="{{ url_for('cart') }}"><h2>Handlekurv</h2></a>
+        {% if 'username' in session %}
+            <a href="{{ url_for('logout') }}"><h2>Logg ut</h2></a>
+        {% else %}
+            <a href="{{ url_for('login') }}"><h2>Logg inn</h2></a>
+            <a href="{{ url_for('register') }}"><h2>Registrer</h2></a>
+        {% endif %}
+    </div>
+    
+    <h1>Velkommen til butikken!</h1>
+    <p>Utforsk våre produkter og legg dem til i handlekurven.</p>
+</body>
+</html>

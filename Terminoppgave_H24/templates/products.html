@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('home') }}"><h2>Butikk</h2></a>
+        <a href=""><h2>Handlekurv</h2></a>
+        {% if 'username' in session %}
+            <a href="{{ url_for('logout') }}"><h2>Logg ut</h2></a>
+        {% else %}
+            <a href="{{ url_for('login') }}"><h2>Logg inn</h2></a>
+            <a href="{{ url_for('register') }}"><h2>Registrer</h2></a>
+        {% endif %}
+    </div>
+    
+    <div class="lowheader">
+        <h2>Produkter</h2>
+        <p>Her kan du se våre tilgjengelige produkter.</p>
+    </div>
+    
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product }} 
+                <a href="{{ url_for('add_to_cart', product_name=product) }}">Legg til i handlekurv</a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{{ url_for('cart') }}">Se handlekurv</a>
+</body>
+</html>
