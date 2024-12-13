@@ -23,15 +23,26 @@
         <p>Her kan du se våre tilgjengelige produkter.</p>
     </div>
     
-    <ul>
-        {% for product in products %}
-            <li>
-                {{ product }} 
-                <a href="{{ url_for('add_to_cart', product_name=product) }}">Legg til i handlekurv</a>
-            </li>
-        {% endfor %}
-    </ul>
-    
-    <a href="{{ url_for('cart') }}">Se handlekurv</a>
+    <div class="product-container">
+        <div class="product">
+            <img src="{{ url_for('static', filename='shoes-153310_1280.png') }}" alt="Produkt 1" class="product-image">
+            <h3 class="product-name">Sko</h3>
+            <p class="product-price">Kr 199,00</p>
+            <a href="{{ url_for('add_to_cart', product_name='Produkt 1') }}" class="buy-button">Kjøp</a>
+        </div>
+        <div class="product">
+            <img src="{{ url_for('static', filename='jacket-2899728_1280.png') }}" alt="Produkt 2" class="product-image">
+            <h3 class="product-name">Flis jakke</h3>
+            <p class="product-price">Kr 299,00</p>
+            <a href="{{ url_for('add_to_cart', product_name='') }}" class="buy-button">Kjøp</a>
+        </div>
+        <div class="product">
+            <img src="{{ url_for('static', filename='careless-harpen-lue-beige-42802865438972.png') }}" alt="Produkt 3" class="product-image">
+            <h3 class="product-name">Produkt 3</h3>
+            <p class="product-price">Kr 399,00</p>
+            <a href="{{ url_for('add_to_cart', product_name='Produkt 3') }}" class="buy-button">Kjøp</a>
+        </div>
+    </div>
+
 </body>
 </html>
